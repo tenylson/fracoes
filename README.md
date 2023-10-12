@@ -59,3 +59,13 @@ Usando a linguagem do domínio, você pode definir:
    - Divisão = multiplicação com o inverso da fração.
 
 'Oposta' e 'inverso' podem ser definidos como métodos públicos; assim, o código fica mais legível e utiliza a linguagem do domínio.
+
+Conclusão
+Esteja você trabalhando em um kata ou em um projeto real, tente seguir estas diretrizes:
+1. Divida o problema no nível de abstração mais elevado possível.
+2. Priorize.
+3. Explore - mergulhe em um dos subproblemas e repita os passos 1 e 2. Faça muitas perguntas, encontre exemplos, casos especiais, descubra complexidades ocultas e elimine todos os mal-entendidos.
+4. Utilize TDD (Desenvolvimento Orientado a Testes) + Refatoração usando lógica especializada do domínio.
+5. Certifique-se de anotar todos os pontos de dificuldade que você enfrentou ao implementar a funcionalidade e os problemas com o código. Você pode discutir esses problemas com sua equipe ou pesquisá-los para trabalhar de forma mais eficaz e melhorar sua experiência de codificação."
+
+Essas diretrizes são valiosas para melhorar o processo de desenvolvimento de software e a qualidade do código, seja em katas de treinamento ou em projetos do mundo real.
