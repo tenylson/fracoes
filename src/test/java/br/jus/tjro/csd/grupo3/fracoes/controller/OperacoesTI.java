@@ -16,21 +16,26 @@ public class OperacoesTI {
 
     @Test
     public void testaAdicaoComSucesso(){
-
-        StringBuilder payload = new StringBuilder();
-        payload.append("[")
-                .append("1,")
-                .append("2,")
-                .append("3")
-                .append("]");
-
         RestAssured.given()
                 .contentType(ContentType.JSON)
                 .port(port)
-                .body(payload.toString())
+                .body("[1,2,3]")
                 .post("/operacoes/adicao")
                 .then()
                 .statusCode(HttpStatus.OK.value())
+                .extract()
+                .response();
+    }
+
+    @Test
+    public void testarAdcaoComValorFracionado(){
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .port(port)
+                .body("[1.1,2]")
+                .post("/operacoes/adicao")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .extract()
                 .response();
     }

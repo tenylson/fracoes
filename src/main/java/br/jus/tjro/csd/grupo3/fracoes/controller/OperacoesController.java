@@ -1,5 +1,7 @@
 package br.jus.tjro.csd.grupo3.fracoes.controller;
 
+import br.jus.tjro.csd.grupo3.fracoes.service.OperacaoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -9,12 +11,11 @@ import java.util.List;
 @RequestMapping("/operacoes")
 public class OperacoesController {
 
+    @Autowired
+    private OperacaoService operacaoService;
+
     @PostMapping("/adicao")
     public BigDecimal adicao(@RequestBody List<BigDecimal> termos){
-        BigDecimal produto = new BigDecimal(0);
-        for (BigDecimal termo:termos) {
-            produto = produto.add(termo);
-        }
-        return produto;
+        return operacaoService.adicao(termos);
     }
 }
