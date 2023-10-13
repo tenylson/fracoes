@@ -18,4 +18,9 @@ public class OperacoesController {
     public BigDecimal adicao(@RequestBody List<BigDecimal> termos){
         return operacaoService.adicao(termos);
     }
+
+    @PostMapping("/subtracao")
+    public BigDecimal subtracao(@RequestBody List<BigDecimal> termos){
+        return operacaoService.subtracao(termos);
+    }
 }

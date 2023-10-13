@@ -35,4 +35,17 @@ public class OperacaoService {
         BigDecimal inteiro = termo.setScale(0,RoundingMode.DOWN);
         return inteiro.compareTo(termo) != 0;
     }
+
+    public BigDecimal subtracao(List<BigDecimal> termos) {
+        BigDecimal produto = new BigDecimal(0);
+        for (BigDecimal termo: termos) {
+            if(isValorValidoParaAdicao(termo))
+                if(isValorZero(produto)){
+                    produto = termo;
+                }else{
+                    produto = produto.subtract(termo);
+                }
+        }
+        return produto;
+    }
 }

@@ -40,5 +40,31 @@ public class OperacoesTI {
                 .response();
     }
 
+    @Test
+    public void testaSubtracaoComSucesso(){
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .port(port)
+                .body("[10,2,3]")
+                .post("/operacoes/subtracao")
+                .then()
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .response();
+    }
+
+    @Test
+    public void testarSubtracaoComValorZero(){
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .port(port)
+                .body("[1,0]")
+                .post("/operacoes/subtracao")
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .extract()
+                .response();
+    }
+
 
 }
