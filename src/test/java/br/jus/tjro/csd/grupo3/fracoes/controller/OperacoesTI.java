@@ -28,11 +28,11 @@ public class OperacoesTI {
     }
 
     @Test
-    public void testarAdcaoComValorFracionado(){
+    public void testarAdcaoComValorZero(){
         RestAssured.given()
                 .contentType(ContentType.JSON)
                 .port(port)
-                .body("[1.1,2]")
+                .body("[1,0]")
                 .post("/operacoes/adicao")
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())

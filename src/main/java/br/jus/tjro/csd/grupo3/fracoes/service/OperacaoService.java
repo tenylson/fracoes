@@ -15,15 +15,20 @@ public class OperacaoService {
         BigDecimal produto = new BigDecimal(0);
         for (BigDecimal termo : termos) {
 
-            if(isValorFracionado(termo)){
-                throw new ParametroInvalidoException(String.format("Valor da inválido %s para operção adição, não pode havar valor fracionado",termo));
-            }
-
-
-
-            produto = produto.add(termo);
+            if(isValorValidoParaAdicao(termo))
+                produto = produto.add(termo);
         }
         return produto;
+    }
+    private boolean isValorValidoParaAdicao(BigDecimal termo) {
+        if(isValorZero(termo)){
+            throw new ParametroInvalidoException(String.format("Valor da inválido, o termo não pode ter valor igual à %s ",termo));
+        }
+        return true;
+    }
+
+    private boolean isValorZero(BigDecimal termo) {
+        return termo.compareTo(BigDecimal.ZERO) == 0;
     }
 
     private boolean isValorFracionado(BigDecimal termo) {
