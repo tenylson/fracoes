@@ -56,7 +56,26 @@ public class OperacoesTI {
                 .response();
     }
 
+    @Test
+    public void testaDivisaoComSucesso(){
+        post("{\"numerador\":10,\"denominador\":2}"
+        ,"/operacoes/divisao"
+        ,HttpStatus.OK.value());
+    }
 
+    @Test
+    public void testaDivisaoComDenonimadorZero(){
+        post("{\"numerador\":10,\"denominador\":0}"
+                ,"/operacoes/divisao"
+                ,HttpStatus.BAD_REQUEST.value());
+    }
+
+    @Test
+    public void testaDivisaoComFracao(){
+        post("{\"numerador\":0.10,\"denominador\":1}"
+                ,"/operacoes/divisao"
+                ,HttpStatus.BAD_REQUEST.value());
+    }
 
 
 }
