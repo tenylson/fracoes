@@ -12,7 +12,7 @@ public class OperacaoService {
 
     public BigDecimal adicao(List<BigDecimal> termos) {
 
-        BigDecimal produto = new BigDecimal(0);
+        BigDecimal produto = BigDecimal.valueOf(0);
         for (BigDecimal termo : termos) {
 
             if(isValorValidoParaAdicao(termo))
@@ -37,7 +37,7 @@ public class OperacaoService {
     }
 
     public BigDecimal subtracao(List<BigDecimal> termos) {
-        BigDecimal produto = new BigDecimal(0);
+        BigDecimal produto = BigDecimal.valueOf(0);
         for (BigDecimal termo: termos) {
             if(isValorValidoParaAdicao(termo))
                 if(isValorZero(produto)){
@@ -47,5 +47,24 @@ public class OperacaoService {
                 }
         }
         return produto;
+    }
+
+    public BigDecimal multiplicacao(List<BigDecimal> termos) {
+        BigDecimal produto = BigDecimal.valueOf(1);
+        for (BigDecimal termo: termos) {
+            if(isValorValidoParaMultiplicacao(termo)){
+                produto = produto.multiply(termo);
+            }
+
+        }
+
+        return produto;
+    }
+
+    private boolean isValorValidoParaMultiplicacao(BigDecimal termo) {
+        if(isValorZero(termo)){
+            throw new ParametroInvalidoException(String.format("Valor inválido, o termo não pode ter valor igual à %s ",termo));
+        }
+        return true;
     }
 }

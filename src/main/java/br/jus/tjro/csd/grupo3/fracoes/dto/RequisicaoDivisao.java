@@ -8,7 +8,8 @@ import java.util.List;
 
 @Data
 public class RequisicaoCalculo {
-    private List<BigDecimal> termos = new ArrayList<>();
+
+
 
 
 }
