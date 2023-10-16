@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 
 @Data
-public class RequisicaoDivisao {
+public class Fracao {
 
     private BigDecimal numerador;
     private BigDecimal denominador;

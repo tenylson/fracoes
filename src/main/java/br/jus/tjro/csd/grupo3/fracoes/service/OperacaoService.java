@@ -1,6 +1,6 @@
 package br.jus.tjro.csd.grupo3.fracoes.service;
 
-import br.jus.tjro.csd.grupo3.fracoes.dto.RequisicaoDivisao;
+import br.jus.tjro.csd.grupo3.fracoes.dto.Fracao;
 import br.jus.tjro.csd.grupo3.fracoes.exception.ParametroInvalidoException;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +71,7 @@ public class OperacaoService {
         return true;
     }
 
-    public BigDecimal divisao(RequisicaoDivisao requisicaoDivisao) {
+    public BigDecimal divisao(Fracao requisicaoDivisao) {
         BigDecimal produto = BigDecimal.valueOf(1);
         if(isRequisicaoDivisaoValida(requisicaoDivisao)){
             produto = requisicaoDivisao.getNumerador().divide(requisicaoDivisao.getDenominador(),2,RoundingMode.HALF_EVEN);
@@ -79,7 +79,7 @@ public class OperacaoService {
         return produto;
     }
 
-    private boolean isRequisicaoDivisaoValida(RequisicaoDivisao requisicaoDivisao) {
+    private boolean isRequisicaoDivisaoValida(Fracao requisicaoDivisao) {
         if(isValorZero(requisicaoDivisao.getDenominador())){
             throw new ParametroInvalidoException(
                     String.format("Valor inválido, o denomidador não pode ser atribuido o valor igual à %s"

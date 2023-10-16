@@ -1,6 +1,6 @@
 package br.jus.tjro.csd.grupo3.fracoes.controller;
 
-import br.jus.tjro.csd.grupo3.fracoes.dto.RequisicaoDivisao;
+import br.jus.tjro.csd.grupo3.fracoes.dto.Fracao;
 import br.jus.tjro.csd.grupo3.fracoes.service.OperacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ public class OperacoesController {
     }
 
     @PostMapping("/divisao")
-    public BigDecimal divisao(@RequestBody RequisicaoDivisao requisicaoDivisao){
+    public BigDecimal divisao(@RequestBody Fracao requisicaoDivisao){
         return operacaoService.divisao(requisicaoDivisao);
     }
 }
