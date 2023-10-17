@@ -24,4 +24,9 @@ public class FracoesController {
         return fracoesService.adicao(requisicaoCalculo);
     }
 
+    @PostMapping("/subtracao")
+    public Fracao subtracao(@RequestBody RequisicaoCalculo requisicaoCalculo){
+        return fracoesService.subtracao(requisicaoCalculo);
+    }
+
 }

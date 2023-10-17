@@ -55,4 +55,11 @@ public class FracoesService {
         return requisicaoCalculo.getPrimeiroTermo().getDenominador().compareTo(requisicaoCalculo.getSegundoTermo().getDenominador())==0;
     }
 
+    public Fracao subtracao(RequisicaoCalculo requisicaoCalculo) {
+        Fracao seundoTermo = requisicaoCalculo.getSegundoTermo();
+        seundoTermo.setNumerador(seundoTermo.getNumerador().multiply(BigDecimal.valueOf(-1)));
+        requisicaoCalculo.setSegundoTermo(seundoTermo);
+
+        return adicao(requisicaoCalculo);
+    }
 }

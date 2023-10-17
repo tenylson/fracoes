@@ -47,6 +47,16 @@ public class FracaoIT {
     }
 
 
+    @Test
+    public void testaSubtracaoComSucesso(){
+        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(7),BigDecimal.valueOf(2));
+        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(10),BigDecimal.valueOf(3));
+        RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
+
+        post(payload.getPayload(),"/fracoes/subtracao", HttpStatus.OK.value());
+    }
+
+
 
     private void post(String payload, String url, int httpStatus){
         RestAssured.given()
