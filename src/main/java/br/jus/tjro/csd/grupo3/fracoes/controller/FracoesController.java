@@ -20,8 +20,13 @@ public class FracoesController {
     private FracoesService fracoesService;
 
     @PostMapping("/adicao")
-    public BigDecimal adicao(@RequestBody RequisicaoCalculo requisicaoCalculo){
+    public Fracao adicao(@RequestBody RequisicaoCalculo requisicaoCalculo){
         return fracoesService.adicao(requisicaoCalculo);
+    }
+
+    @PostMapping("/subtracao")
+    public Fracao subtracao(@RequestBody RequisicaoCalculo requisicaoCalculo){
+        return fracoesService.subtracao(requisicaoCalculo);
     }
 
 }
