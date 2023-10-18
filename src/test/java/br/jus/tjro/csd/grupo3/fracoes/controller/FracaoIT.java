@@ -119,6 +119,13 @@ public class FracaoIT {
                 .extract()
                 .response();
     }
+
+    @Test
+    public void testaSimplificacao(){
+        Fracao resultado = new Fracao(12,30);
+        Fracao simplificado = new Fracao(2,5);
+        Assertions.assertTrue(simplificado.equals(resultado));
+    }
 }
 
 
