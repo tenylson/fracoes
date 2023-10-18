@@ -62,4 +62,11 @@ public class FracoesService {
         BigDecimal denomidador = requisicaoCalculo.getPrimeiroTermo().getDenominador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
         return new Fracao(numerador,denomidador);
     }
+
+    public Fracao divisao(RequisicaoCalculo requisicaoCalculo) {
+        BigDecimal numerador = requisicaoCalculo.getSegundoTermo().getDenominador();
+        BigDecimal denomidador = requisicaoCalculo.getSegundoTermo().getNumerador();
+        requisicaoCalculo.setSegundoTermo(new Fracao(numerador,denomidador));
+        return multiplicacao(requisicaoCalculo);
+    }
 }

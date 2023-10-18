@@ -65,6 +65,15 @@ public class FracaoIT {
         post(payload.getPayload(),"/fracoes/multiplicacao", HttpStatus.OK.value());
     }
 
+    @Test
+    public void testaDivisaoComSucesso(){
+        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(7));
+        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(1),BigDecimal.valueOf(3));
+        RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
+
+        post(payload.getPayload(),"/fracoes/divisao", HttpStatus.OK.value());
+    }
+
 
 
     private void post(String payload, String url, int httpStatus){
