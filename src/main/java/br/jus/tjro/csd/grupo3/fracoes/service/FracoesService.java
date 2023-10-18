@@ -20,7 +20,7 @@ public class FracoesService {
             return somaBaseDiferente(requisicaoCalculo);
         }
 
-        return new Fracao(numerado,denominador);
+        return new Fracao(numerado.intValue(),denominador.intValue());
     }
 
     private void validaRequisicao(RequisicaoCalculo requisicaoCalculo) {
@@ -41,7 +41,7 @@ public class FracoesService {
         BigDecimal numeradorSegundo = requisicaoCalculo.getSegundoTermo().getNumerador().multiply(requisicaoCalculo.getPrimeiroTermo().getDenominador());
         BigDecimal denomiador = requisicaoCalculo.getPrimeiroTermo().getDenominador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
         numeradorPrimeiro = numeradorPrimeiro.add(numeradorSegundo);
-        return new Fracao(numeradorPrimeiro,denomiador);
+        return new Fracao(numeradorPrimeiro.intValue(),denomiador.intValue());
     }
 
     private boolean isMesmaBase(RequisicaoCalculo requisicaoCalculo) {
@@ -60,13 +60,13 @@ public class FracoesService {
         validaRequisicao(requisicaoCalculo);
         BigDecimal numerador = requisicaoCalculo.getPrimeiroTermo().getNumerador().multiply(requisicaoCalculo.getSegundoTermo().getNumerador());
         BigDecimal denomidador = requisicaoCalculo.getPrimeiroTermo().getDenominador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
-        return new Fracao(numerador,denomidador);
+        return new Fracao(numerador.intValue(), denomidador.intValue());
     }
 
     public Fracao divisao(RequisicaoCalculo requisicaoCalculo) {
         BigDecimal numerador = requisicaoCalculo.getSegundoTermo().getDenominador();
         BigDecimal denomidador = requisicaoCalculo.getSegundoTermo().getNumerador();
-        requisicaoCalculo.setSegundoTermo(new Fracao(numerador,denomidador));
+        requisicaoCalculo.setSegundoTermo(new Fracao(numerador.intValue(),denomidador.intValue()));
         return multiplicacao(requisicaoCalculo);
     }
 }

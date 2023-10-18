@@ -7,8 +7,12 @@ import java.math.BigDecimal;
 
 
 @Data
-@AllArgsConstructor
 public class Fracao {
+
+    public Fracao(int numerador, int denominador){
+        setNumerador(BigDecimal.valueOf(numerador));
+        setDenominador(BigDecimal.valueOf(denominador));
+    }
 
     private BigDecimal numerador;
     private BigDecimal denominador;

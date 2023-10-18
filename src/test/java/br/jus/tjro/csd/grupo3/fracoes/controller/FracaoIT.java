@@ -2,9 +2,11 @@ package br.jus.tjro.csd.grupo3.fracoes.controller;
 
 import br.jus.tjro.csd.grupo3.fracoes.dto.Fracao;
 import br.jus.tjro.csd.grupo3.fracoes.dto.RequisicaoCalculo;
+import br.jus.tjro.csd.grupo3.fracoes.service.FracoesService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
@@ -20,8 +22,8 @@ public class FracaoIT {
 
     @Test
     public void testaAdicaoMesmaBase(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(4));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(3),BigDecimal.valueOf(4));
+        Fracao primeroTermo = new Fracao(2,4);
+        Fracao segundoTermo = new Fracao(3,4);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/adicao", HttpStatus.OK.value());
@@ -30,8 +32,8 @@ public class FracaoIT {
 
     @Test
     public void testaAdicaoBaseDiferente(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(4));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(3),BigDecimal.valueOf(5));
+        Fracao primeroTermo = new Fracao(2,4);
+        Fracao segundoTermo = new Fracao(3,5);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/adicao", HttpStatus.OK.value());
@@ -39,8 +41,8 @@ public class FracaoIT {
 
     @Test
     public void testaAdicaoComFracaoContendoZero(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(0));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(3),BigDecimal.valueOf(5));
+        Fracao primeroTermo = new Fracao(2,0);
+        Fracao segundoTermo = new Fracao(3,5);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/adicao", HttpStatus.BAD_REQUEST.value());
@@ -49,8 +51,8 @@ public class FracaoIT {
 
     @Test
     public void testaSubtracaoComSucesso(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(7),BigDecimal.valueOf(2));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(10),BigDecimal.valueOf(3));
+        Fracao primeroTermo = new Fracao(7,2);
+        Fracao segundoTermo = new Fracao(10,3);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/subtracao", HttpStatus.OK.value());
@@ -58,8 +60,8 @@ public class FracaoIT {
 
     @Test
     public void testaMuliplicacaoComSucesso(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(3));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(5),BigDecimal.valueOf(4));
+        Fracao primeroTermo = new Fracao(2,3);
+        Fracao segundoTermo = new Fracao(5,4);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/multiplicacao", HttpStatus.OK.value());
@@ -67,8 +69,8 @@ public class FracaoIT {
 
     @Test
     public void testaDivisaoComSucesso(){
-        Fracao primeroTermo = new Fracao(BigDecimal.valueOf(2),BigDecimal.valueOf(7));
-        Fracao segundoTermo = new Fracao(BigDecimal.valueOf(1),BigDecimal.valueOf(3));
+        Fracao primeroTermo = new Fracao(2,7);
+        Fracao segundoTermo = new Fracao(1,3);
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/divisao", HttpStatus.OK.value());
