@@ -37,13 +37,6 @@ public class FracoesService {
     }
 
     private Fracao somaBaseDiferente(RequisicaoCalculo requisicaoCalculo) {
-        /*
-        3/5 + 1/2
-                3*2 =6
-                5*1 =5
-                6+5
-        11/10
-        * */
         BigDecimal numeradorPrimeiro = requisicaoCalculo.getPrimeiroTermo().getNumerador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
         BigDecimal numeradorSegundo = requisicaoCalculo.getSegundoTermo().getNumerador().multiply(requisicaoCalculo.getPrimeiroTermo().getDenominador());
         BigDecimal denomiador = requisicaoCalculo.getPrimeiroTermo().getDenominador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
@@ -61,5 +54,12 @@ public class FracoesService {
         requisicaoCalculo.setSegundoTermo(seundoTermo);
 
         return adicao(requisicaoCalculo);
+    }
+
+    public Fracao multiplicacao(RequisicaoCalculo requisicaoCalculo) {
+        validaRequisicao(requisicaoCalculo);
+        BigDecimal numerador = requisicaoCalculo.getPrimeiroTermo().getNumerador().multiply(requisicaoCalculo.getSegundoTermo().getNumerador());
+        BigDecimal denomidador = requisicaoCalculo.getPrimeiroTermo().getDenominador().multiply(requisicaoCalculo.getSegundoTermo().getDenominador());
+        return new Fracao(numerador,denomidador);
     }
 }
