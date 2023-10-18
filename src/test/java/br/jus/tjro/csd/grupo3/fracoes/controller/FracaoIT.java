@@ -5,6 +5,7 @@ import br.jus.tjro.csd.grupo3.fracoes.dto.RequisicaoCalculo;
 import br.jus.tjro.csd.grupo3.fracoes.service.FracoesService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,9 @@ public class FracaoIT {
     @LocalServerPort
     private int port;
 
+    @Autowired
+    private FracoesService fracoesService;
+
     @Test
     public void testaAdicaoMesmaBase(){
         Fracao primeroTermo = new Fracao(2,4);
@@ -27,6 +31,10 @@ public class FracaoIT {
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/adicao", HttpStatus.OK.value());
+
+        Fracao resultado = new Fracao(5,4);
+
+        Assertions.assertTrue(fracoesService.adicao(payload).equals(resultado));
     }
 
 
@@ -37,6 +45,11 @@ public class FracaoIT {
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/adicao", HttpStatus.OK.value());
+
+        Fracao resultado = new Fracao(22,20);
+
+        Assertions.assertTrue(fracoesService.adicao(payload).equals(resultado));
+
     }
 
     @Test
@@ -56,6 +69,11 @@ public class FracaoIT {
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/subtracao", HttpStatus.OK.value());
+
+        Fracao resultado = new Fracao(1,6);
+
+        Assertions.assertTrue(fracoesService.subtracao(payload).equals(resultado));
+
     }
 
     @Test
@@ -65,6 +83,12 @@ public class FracaoIT {
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/multiplicacao", HttpStatus.OK.value());
+
+        Fracao resultado = new Fracao(10,12);
+
+        Assertions.assertTrue(fracoesService.multiplicacao(payload).equals(resultado));
+
+
     }
 
     @Test
@@ -74,6 +98,12 @@ public class FracaoIT {
         RequisicaoCalculo payload = new RequisicaoCalculo(primeroTermo,segundoTermo);
 
         post(payload.getPayload(),"/fracoes/divisao", HttpStatus.OK.value());
+
+        Fracao resultado = new Fracao(6,7);
+
+        Assertions.assertTrue(fracoesService.divisao(payload).equals(resultado));
+
+
     }
 
 

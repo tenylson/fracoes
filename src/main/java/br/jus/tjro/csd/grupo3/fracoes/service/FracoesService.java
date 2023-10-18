@@ -69,4 +69,5 @@ public class FracoesService {
         requisicaoCalculo.setSegundoTermo(new Fracao(numerador.intValue(),denomidador.intValue()));
         return multiplicacao(requisicaoCalculo);
     }
+
 }
