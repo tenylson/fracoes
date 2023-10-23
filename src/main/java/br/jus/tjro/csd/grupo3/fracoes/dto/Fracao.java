@@ -20,12 +20,7 @@ public class Fracao {
     }
 
     private void simplificar() {
-        int limite=0;
-        if(numerador.compareTo(denominador) < 0){
-            limite = numerador.intValue();
-        }else {
-            limite = denominador.intValue();
-        }
+        int limite = numerador.compareTo(denominador) < 0 ? numerador.intValue() : denominador.intValue();
         for (int i = limite; i > 0 ; i--) {
             BigDecimal numeradorTemp = getNumerador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
             BigDecimal denominadorTemp = getDenominador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
