@@ -22,13 +22,13 @@ public class Fracao {
     private void simplificar() {
         int limite = numerador.compareTo(denominador) < 0 ? numerador.intValue() : denominador.intValue();
         for (int i = limite; i > 0 ; i--) {
-            BigDecimal numeradorTemp = getNumerador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
-            BigDecimal denominadorTemp = getDenominador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
-            if(isValorInteiro(numeradorTemp) &&
-                    isValorInteiro(denominadorTemp)
+            BigDecimal numerador = getNumerador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
+            BigDecimal denominador = getDenominador().divide(BigDecimal.valueOf(i),4,RoundingMode.HALF_UP);
+            if(isValorInteiro(numerador) &&
+                    isValorInteiro(denominador)
             ){
-                setNumerador(numeradorTemp);
-                setDenominador(denominadorTemp);
+                setNumerador(numerador);
+                setDenominador(denominador);
                 break;
             }
         }
